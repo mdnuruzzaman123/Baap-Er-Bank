@@ -6,6 +6,14 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
     const depositNewAmountString = depositField.value;
     const depositNewAmount = parseFloat(depositNewAmountString);
 
+    // clearing step :
+    depositField.value = '';
+
+    //! nan step :
+    if (isNaN(depositNewAmount)) {
+        return alert('Please provide a number');
+    }
+
     // third step :
     const depositAmountElement = document.getElementById('deposit-amount');
     const depositAmountString = depositAmountElement.innerText;
@@ -23,9 +31,6 @@ document.getElementById('btn-deposit').addEventListener('click', function () {
     // sixth step :
     const finalTotalAmount = totalAmount + depositNewAmount;
     depositTotalAmount.innerText = finalTotalAmount;
-
-    // last step :
-    depositField.value = '';
 })
 
 
@@ -37,6 +42,14 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const withdrawNewAmountString = withdrawField.value;
     const withdrawNewAmount = parseFloat(withdrawNewAmountString);
 
+    // clearing step :
+    withdrawField.value = '';
+
+    //! nan step :
+    if (isNaN(withdrawNewAmount)) {
+        return alert('Please provide a number');
+    }
+
     // third step :
     const withdrawAmountElement = document.getElementById('withdraw-amount');
     const withdrawAmountString = withdrawAmountElement.innerText;
@@ -47,10 +60,7 @@ document.getElementById('btn-withdraw').addEventListener('click', function () {
     const totalAmountString = depositTotalAmount.innerText;
     const totalAmount = parseFloat(totalAmountString);
 
-    // last step :
-    withdrawField.value = '';
-
-    // alert step :
+    //! alert step :
     if (withdrawNewAmount > totalAmount) {
         return alert('Insufficient balance');
     }
